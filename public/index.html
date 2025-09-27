@@ -2,17 +2,27 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
-  <title>Farmspiel</title>
+  <title>Farmspiel mit Supabase</title>
   <link rel="stylesheet" href="styles.css" />
+  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
 </head>
 <body>
   <h1>Meine Farm</h1>
-  <div id="farm-area">
-    <!-- Hier erscheinen Felder / Gebäude -->
-  </div>
-  <button id="plantPotato">Kartoffel anpflanzen</button>
-  <div id="status"></div>
 
-  <script src="../src/main.js"></script>
+  <div id="auth-section">
+    <input type="email" id="email" placeholder="E-Mail eingeben" />
+    <button id="login">Login mit Magic Link</button>
+  </div>
+
+  <div id="game-section" style="display:none;">
+    <p>Willkommen, <span id="user-email"></span></p>
+    <p>Kartoffeln im Lager: <span id="potato-count">0</span></p>
+    <p>Geld: €<span id="money-count">0</span></p>
+    <button id="plant-potato">Kartoffel ernten</button>
+    <button id="sell-potato">Kartoffel verkaufen (€5)</button>
+    <button id="logout">Logout</button>
+  </div>
+
+  <script src="main.js"></script>
 </body>
 </html>
