@@ -1,0 +1,17 @@
+body {
+  font-family: sans-serif;
+  padding: 20px;
+}
+#farm-area {
+  border: 1px solid #666;
+  min-height: 200px;
+  margin-bottom: 20px;
+}
+button {
+  padding: 8px 16px;
+  font-size: 16px;
+}
+#status {
+  margin-top: 12px;
+  color: green;
+}
