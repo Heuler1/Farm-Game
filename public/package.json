@@ -1,0 +1,11 @@
+{
+  "name": "farmgame-template",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "serve public",
+    "dev": "serve public"
+  },
+  "dependencies": {
+    "serve": "^14.0.1"
+  }
+}
