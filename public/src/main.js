@@ -13,8 +13,18 @@ document.addEventListener("DOMContentLoaded", () => {
   const emailDisplay = document.getElementById("user-email");
 
   loginBtn.addEventListener("click", async () => {
-    const email = emailInput.value;
-    alert("Login wird versucht für: " + email);
+  const { data, error } = await supabase.auth.signInAnonymously();
+
+  if (error) {
+    console.error("Fehler beim Anonym-Login:", error.message);
+    alert("Fehler: " + error.message);
+  } else {
+    sessionUser = data.user;
+    await loadOrCreateInventory();
+    updateUI();
+    alert("Anonym eingeloggt ✅");
+  }
+});
 
     const { error } = await supabase.auth.signInWithOtp({ email });
 
