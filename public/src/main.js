@@ -1,3 +1,5 @@
+alert("✅ main.js wurde geladen");
+
 document.addEventListener("DOMContentLoaded", () => {
   // ✅ Konfiguration
   const SUPABASE_URL = "https://uduyudbdybaeaurxzzq.supabase.co";
