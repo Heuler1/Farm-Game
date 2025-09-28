@@ -1,52 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
-  alert("JavaScript geladen ✅");
-
-  const SUPABASE_URL = "https://uduyudbdybaeaeurxzzq.supabase.co";
-  const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVkdXl1ZGJkeWJhZWFldXJ4enpxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTg5ODc4NzMsImV4cCI6MjA3NDU2Mzg3M30.hHoMkh8YtB_GKquz0hTu2_kaJWbHSbBAVBcYyBZRpSU";
+  // ✅ Konfiguration
+  const SUPABASE_URL = "https://uduyudbdybaeaurxzzq.supabase.co";
+  const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."; // dein echter Key
   const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
+  // ✅ UI-Elemente
   const loginBtn = document.getElementById("login");
   const logoutBtn = document.getElementById("logout");
-  const emailInput = document.getElementById("email");
+  const plantBtn = document.getElementById("plant-potato");
+  const sellBtn = document.getElementById("sell-potato");
   const authSection = document.getElementById("auth-section");
-  const gameSection = document.getElementById("game-section");
-  const emailDisplay = document.getElementById("user-email");
-
-  loginBtn.addEventListener("click", async () => {
-  const { data, error } = await supabase.auth.signInAnonymously();
-
-  if (error) {
-    console.error("Fehler beim Anonym-Login:", error.message);
-    alert("Fehler: " + error.message);
-  } else {
-    sessionUser = data.user;
-    await loadOrCreateInventory();
-    updateUI();
-    alert("Anonym eingeloggt ✅");
-  }
-});
-
-    const { error } = await supabase.auth.signInWithOtp({ email });
-
-    if (error) {
-      console.error("Login-Fehler:", error.message);
-      alert("Fehler: " + error.message);
-    } else {
-      alert("Magic Link gesendet! ✔️");
-    }
-  });
-
-  logoutBtn?.addEventListener("click", async () => {
-    await supabase.auth.signOut();
-    location.reload();
-  });
-
-  supabase.auth.getSession().then(({ data: { session } }) => {
-    if (session) {
-      const user = session.user;
-      authSection.style.display = "none";
-      gameSection.style.display = "block";
-      emailDisplay.textContent = user.email;
-    }
-  });
-});
+  const gameSection = document.get
