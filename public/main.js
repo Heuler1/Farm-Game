@@ -4,7 +4,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // ✅ Konfiguration
   const SUPABASE_URL = "https://uduyudbdybaeaurxzzq.supabase.co";
   const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9"; // dein echter Key
-  const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  const { createClient } = supabase;
+const client = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
   // 🔗 UI-Elemente
   const loginBtn = document.getElementById("login");
