@@ -1,11 +1,11 @@
 alert("✅ main.js wurde geladen");
 
 document.addEventListener("DOMContentLoaded", () => {
-  // ✅ Konfiguration
-  const SUPABASE_URL = "https://uduyudbdybaeaurxzzq.supabase.co";
-  const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9"; // dein echter Key
+  // ✅ Supabase-Konfiguration
   const { createClient } = supabase;
-const client = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  const SUPABASE_URL = "https://uduyudbdybaeaurxzzq.supabase.co";
+  const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."; // dein echter Public Anon Key
+  const client = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
   // 🔗 UI-Elemente
   const loginBtn = document.getElementById("login");
@@ -28,7 +28,7 @@ const client = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
     if (!email) {
       console.log("⚠️ Kein E-Mail eingegeben – mache anonymen Login");
-      const { data, error } = await supabase.auth.signInAnonymously();
+      const { data, error } = await client.auth.signInAnonymously();
       if (error) return alert("Anonymer Login fehlgeschlagen: " + error.message);
       sessionUser = data.user;
       await loadOrCreateInventory();
@@ -38,7 +38,7 @@ const client = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
     }
 
     console.log("📨 Versuche Magic Link an:", email);
-    const { data, error } = await supabase.auth.signInWithOtp({ email });
+    const { error } = await client.auth.signInWithOtp({ email });
 
     if (error) {
       console.error("❌ Fehler beim Login:", error.message);
@@ -49,7 +49,7 @@ const client = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
   });
 
   // 🔁 Session prüfen
-  supabase.auth.getSession().then(async ({ data: { session } }) => {
+  client.auth.getSession().then(async ({ data: { session } }) => {
     if (session) {
       sessionUser = session.user;
       await loadOrCreateInventory();
@@ -59,13 +59,13 @@ const client = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
   // 🔐 Logout
   logoutBtn.addEventListener("click", async () => {
-    await supabase.auth.signOut();
+    await client.auth.signOut();
     location.reload();
   });
 
   // 📦 Inventar laden oder neu anlegen
   async function loadOrCreateInventory() {
-    const { data, error } = await supabase
+    const { data } = await client
       .from("inventar")
       .select("*")
       .eq("user_id", sessionUser.id)
@@ -74,7 +74,7 @@ const client = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
     if (data) {
       inventory = { kartoffeln: data.kartoffeln, geld: data.geld };
     } else {
-      await supabase.from("inventar").insert({
+      await client.from("inventar").insert({
         user_id: sessionUser.id,
         kartoffeln: 0,
         geld: 0,
@@ -95,7 +95,7 @@ const client = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
   // 🥔 Kartoffel pflanzen
   plantBtn.addEventListener("click", async () => {
     inventory.kartoffeln += 1;
-    await supabase
+    await client
       .from("inventar")
       .update({ kartoffeln: inventory.kartoffeln })
       .eq("user_id", sessionUser.id);
@@ -107,7 +107,7 @@ const client = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
     if (inventory.kartoffeln > 0) {
       inventory.kartoffeln -= 1;
       inventory.geld += 5;
-      await supabase
+      await client
         .from("inventar")
         .update({
           kartoffeln: inventory.kartoffeln,
