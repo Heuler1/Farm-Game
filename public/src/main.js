@@ -1,3 +1,5 @@
+alert("JavaScript geladen!");
+
 supabase.auth.onAuthStateChange((event, session) => {
   console.log("Auth Change:", event);
   console.log("Session:", session);
