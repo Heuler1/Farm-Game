@@ -1,15 +1,22 @@
-# Farmgame Template
+# Kapiland-Style Frontend Prototype (Extended)
 
-Dies ist ein einfaches HTML/JS-Template für dein Browser-Farmspiel.
+Dieses Frontend enthält jetzt:
 
-## Lokales Testen
+- Ausbau von Betrieben
+- Produktionsketten (Rohstoffe -> Zwischenprodukte -> Endprodukte)
+- Markt (kaufen/verkaufen)
+- Verkaufsladen für Systemverkäufe
+- Lieferaufträge mit Tier-Freischaltung
+- Forschung mit Progression
+- Langzeit-Statistiken
+- Persistenz per `localStorage`
 
-1. `npm install`
-2. `npm run start`
-3. Öffne http://localhost:5000 im Browser
+## Lokal starten
 
-## Deployment auf Vercel
+```bash
+cd public
+npm install
+npm run start
+```
 
-1. Repository zu GitHub pushen
-2. Vercel öffnen → „New Project“ → Repo importieren
-3. Einstellungen bestätigen → Deploy
+Danach im Browser öffnen (normalerweise `http://localhost:3000`).
