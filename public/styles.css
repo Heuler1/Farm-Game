@@ -1,0 +1,165 @@
+:root {
+  color-scheme: dark;
+  --bg: #0f1621;
+  --panel: #1a2332;
+  --card: #222f44;
+  --text: #dce6f5;
+  --muted: #9db0cc;
+  --accent: #4da3ff;
+  --danger: #ef5b5b;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+  padding: 16px 24px;
+  border-bottom: 1px solid #2b374b;
+}
+
+h1, h2, h3 {
+  margin: 0 0 8px;
+}
+
+.subtitle {
+  margin: 0;
+  color: var(--muted);
+}
+
+.resource-bar {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 10px;
+  padding: 14px 24px;
+}
+
+.resource-pill {
+  background: var(--panel);
+  border: 1px solid #2f3f58;
+  border-radius: 10px;
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.resource-pill small {
+  color: var(--muted);
+}
+
+.layout {
+  padding: 0 24px 24px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 14px;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid #2f3f58;
+  border-radius: 12px;
+  padding: 14px;
+}
+
+.hint {
+  margin: 0 0 12px;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid #344764;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 8px;
+}
+
+.meta {
+  margin: 5px 0;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.lvl {
+  color: var(--accent);
+  font-size: 0.86rem;
+}
+
+.compact-list {
+  margin: 0;
+  padding-left: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+button {
+  border: 0;
+  border-radius: 9px;
+  background: #2f8df0;
+  color: white;
+  padding: 8px 10px;
+  cursor: pointer;
+}
+
+button:hover {
+  filter: brightness(1.05);
+}
+
+button.primary {
+  background: #1ea660;
+}
+
+button.danger {
+  background: var(--danger);
+}
+
+.market-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.battle-grid {
+  display: flex;
+  gap: 8px;
+  align-items: end;
+  margin-bottom: 10px;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.9rem;
+}
+
+select {
+  background: #26344a;
+  color: var(--text);
+  border: 1px solid #3d506d;
+  border-radius: 6px;
+  padding: 6px;
+}
+
+.result-box {
+  border: 1px dashed #4c6488;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 12px;
+  min-height: 52px;
+}
