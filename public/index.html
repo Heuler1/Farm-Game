@@ -2,27 +2,57 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
-  <title>Farmspiel</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kapiland-Style Wirtschaftsspiel (Extended MVP)</title>
   <link rel="stylesheet" href="styles.css" />
-  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
 </head>
 <body>
-  <h1>Meine Farm</h1>
+  <header class="topbar">
+    <div>
+      <h1>Wirtschafts-Tycoon</h1>
+      <p class="subtitle">Langzeit-Loop: Produktionsketten, Aufträge, Forschung, Märkte</p>
+    </div>
+    <button id="reset-btn" class="danger">Neu starten</button>
+  </header>
 
-  <div id="auth-section">
-    <input type="email" id="email" placeholder="E-Mail eingeben" />
-    <button id="login">Login mit Magic Link</button>
-    <p style="margin-top:8px;"><em>(Alternativ: Button klicken ohne E-Mail für anonymen Test)</em></p>
-  </div>
+  <section class="resource-bar" id="resource-bar"></section>
 
-  <div id="game-section" style="display:none;">
-    <p>Willkommen, <span id="user-email"></span></p>
-    <p>Kartoffeln im Lager: <span id="potato-count">0</span></p>
-    <p>Geld: €<span id="money-count">0</span></p>
-    <button id="plant-potato">Kartoffel ernten</button>
-    <button id="sell-potato">Kartoffel verkaufen (€5)</button>
-    <button id="logout">Logout</button>
-  </div>
+  <main class="layout">
+    <section class="panel">
+      <h2>Betriebe</h2>
+      <div id="buildings"></div>
+
+      <h3>Bauwarteschlange</h3>
+      <ul id="queue" class="compact-list"></ul>
+    </section>
+
+    <section class="panel">
+      <h2>Produktionsketten</h2>
+      <ul id="chains" class="compact-list"></ul>
+
+      <h2>Verkaufsladen (System)</h2>
+      <div id="system-store"></div>
+    </section>
+
+    <section class="panel">
+      <h2>Markt</h2>
+      <div id="market"></div>
+
+      <h2>Lieferaufträge</h2>
+      <ul id="contracts" class="compact-list"></ul>
+      <div id="contract-result" class="result-box">Noch kein Auftrag abgeschlossen.</div>
+    </section>
+
+    <section class="panel">
+      <h2>Forschung</h2>
+      <ul id="research-list" class="compact-list"></ul>
+      <h3>Forschungsqueue</h3>
+      <ul id="research-queue" class="compact-list"></ul>
+
+      <h2>Firmenfortschritt</h2>
+      <ul id="progress" class="compact-list"></ul>
+    </section>
+  </main>
 
   <script src="main.js"></script>
 </body>
